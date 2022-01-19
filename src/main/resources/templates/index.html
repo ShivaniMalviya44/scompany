@@ -13,8 +13,18 @@
 <div align = "left" >
   
      <h3><a  th:href="@{'/new'}">Add new</a></h3>  
-  
-    </div>
+</div>
+<div>
+    <form th:action = "@{/}">
+        Search: 
+        <input type="text" name="keyword" th:value="${keyword}" required/>
+        &nbsp;
+        <input type="submit" value="Search "/>
+        &nbsp;
+        <input type="button" value="Clear" onClick="clearSearch()"/>
+    </form>
+</div>
+</br>
 </tr>
 <tr>
 <div class="col-sm-5" align = "center">
@@ -24,10 +34,12 @@
                  <table class="table">
   <thead class="thead-dark">
     <tr>
-            <th>Employee ID</th>
+       <th>Employee ID</th>
             <th>Employee Name</th>
             <th>Mobile</th>
             <th>Salary</th>
+            <th>Address</th>
+            <th colspan="2">Operations</th>
             
    </tr>
   </thead>
@@ -37,6 +49,7 @@
 <td th:text="${employee.ename}">Employee Name</td>
 <td th:text="${employee.mobile}">Mobile</td>
 <td th:text="${employee.salary}">Salary</td>
+<td th:text="${employee.address}">Address</td>
 <td>
 <a th:href="@{'/edit/' + ${employee.id}}">Edit</a>
 </td>     
@@ -58,5 +71,10 @@
 </tbody>
 </table>
 <div>
+<script type="text/javascript">
+    function clearSearch(){
+        window.location = '/';
+    }
+</script>
 </body>
 </html>

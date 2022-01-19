@@ -3,6 +3,7 @@ package com.example.scompany.controller;
 import java.util.List;
  
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +22,11 @@ public class EmployeeController {
     private EmployeeService service;
  
     @GetMapping("/")
-    public String viewHomePage(Model model) {
-        List<Employee> listemployee = service.listAll();
+    public String viewHomePage(Model model, 
+    		@Param("keyword")String keyword) {
+        List<Employee> listemployee = service.listAll(keyword);
         model.addAttribute("listemployee", listemployee);
+        model.addAttribute("keyword", keyword);
         System.out.print("Get / ");
         return "index";
     }
