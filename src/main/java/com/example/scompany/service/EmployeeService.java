@@ -14,7 +14,10 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository repo;
 	
-	public List<Employee>listAll(){
+	public List<Employee>listAll(String keyword){
+		if(keyword != null) {
+			return repo.findAll(keyword);
+		}
 		return repo.findAll();
 	}
 	
@@ -31,4 +34,3 @@ public class EmployeeService {
 	}
 	
 }
-

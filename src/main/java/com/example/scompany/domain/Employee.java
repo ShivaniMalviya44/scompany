@@ -13,16 +13,18 @@ public class Employee {
     private String ename;
     private int mobile;
     private int salary;
+    private String address;
 	public Employee() {
 		
 	}
 	
-	public Employee(Long id, String ename, int mobile, int salary) {
+	public Employee(Long id, String ename, int mobile, int salary, String adrress) {
 		super();
 		this.id = id;
 		this.ename = ename;
 		this.mobile = mobile;
 		this.salary = salary;
+		//this.address = address;
 	}
 
 	public Long getId() {
@@ -57,6 +59,13 @@ public class Employee {
 		this.salary = salary;
 	}
 	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	
 }
-
